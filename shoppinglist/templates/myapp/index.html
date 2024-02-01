@@ -1,0 +1,90 @@
+{% extends 'myapp/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="addtask-list">
+        <h1>My shopping list</h1>
+        <form class="ui form" action="{% url 'add' %}" method="post">
+            {% csrf_token %}
+            <div class="create-task">
+                <div class="test-gas">
+                    <input type="text" name="name_add" placeholder="Name of product">
+                    <input type="text" name="categ_add" placeholder="Category">
+                    <input type="text" name="cost_add" placeholder="Cost">
+                </div>
+                <button>Add</button>
+            </div>
+        </form>
+    </div>
+    <div class="task-list">
+        <div class="dropbutton">
+            <button onclick="dropdown()" class="dropbtn">Sort by</button>
+            <button onclick="DropdownFilter()" class="dropbtn">Filter</button>
+            <div id="myDropdown" class="dropdown-content">
+                <div class="sorting-content">
+                    <a class="test-gas" href="{% url 'sortingmaxcost' %}">
+                        <button>max cost</button>
+                    </a>
+                    <a class="test-gas" href="{% url 'sortingmincost' %}">
+                        <button>min cost</button>
+                    </a>
+                    <a class="test-gas" href="{% url 'sortingmaxnumb' %}">
+                        <button>max number</button>
+                    </a>
+                    <a class="test-gas" href="{% url 'sortingminnumb' %}">
+                        <button>min number</button>
+                    </a>
+                </div>
+            </div>
+            <form class="ui form" action="{% url 'filtercost' %}" method="post">
+            {% csrf_token %}
+            <div id="MyDropdownFilter" class="dropdown-content">
+                <input type="text" name="min_cost" placeholder="Min Cost">
+                <input type="text" name="max_cost" placeholder="Max Cost">
+                <button>Find</button>
+            </div>
+        </form>
+        </div>
+        {% for shop in shop_list %}
+        <div class="task-content">
+            <div class="all-task">
+                <p>number: <span class="br-text">{{ shop.id }}</span></p>
+                <p>name: <span class="br-text">{{ shop.name }}</span></p>
+                <p>category: <span class="br-text">{{ shop.category }}</span></p>
+                <p>cost: <span class="br-text">{{ shop.price }}</span></p>
+            </div>
+            <div class="task-btn">
+                <a class="test-gas" href="{% url 'delete' shop_id=shop.id %}">
+                    <button>Delete</button>
+                </a>
+                <a class="dropdown">
+                    <button onclick="myFunction({{ shop.id }})">
+                        <span>Change</span>
+                    </button>
+                </a>
+            </div>
+            <form class="ui form" action="{% url 'update' shop_id=shop.id %}" method="post">
+            {% csrf_token %}
+                <div id={{ shop.id }} class="dropdown-content">
+                    <input type="text" name="name_update" placeholder="Name of product">
+                    <input type="text" name="categ_update" placeholder="Category">
+                    <input type="text" name="cost_update" placeholder="Cost">
+                    <button>Update</button>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+function DropdownFilter() {
+  document.getElementById("MyDropdownFilter").classList.toggle("show");
+}
+function dropdown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+function myFunction(name) {
+  document.getElementById(name).classList.toggle("show");
+}
+</script>
+{% endblock content %}

@@ -1,0 +1,113 @@
+html {
+    box-sizing:border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, p {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #360033, #0b8793);
+    padding: 10px;
+}
+.addtask-list {
+    width: 100%;
+    max-width: 1000px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px;
+    border-radius: 20px;
+}
+h1 {
+    text-align: center;
+    padding: 0 20px 20px 20px;
+}
+.task-list {
+    width: 100%;
+    max-width: 1000px;
+    background: #fff;
+    margin: auto;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.create-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.test-gas {
+    display: flex;
+    text-decoration: none;
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+    background: #edeef0;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 10px 40px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 40px;
+    margin: 10px;
+}
+.dropbutton {
+    padding: 10px;
+}
+.sorting-content {
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+.task-content {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-color: #56949a;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 20px;
+}
+.all-task {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    font-size: 24px;
+}
+.br-text {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0b6893;
+}
+.task-btn{
+    display: flex;
+}
+.dropdown-content {
+    display: none;
+}
+.show {display:block;}
